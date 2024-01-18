@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   
+</head>
+
+<body>
+
+            <h1 style="text-align: center;">Nube Privada </h1>
+        
+        <form method="post" th:action="@{/upload}" enctype="multipart/form-data" >
+          
+                    <input type="file"  name="file" >
+       
+              
+         
+                <button type="submit" >Enviar</button>
+           
+        </form>
+ 
+</body>
+
+
+   
+    
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre del Archivo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="file : ${files}">
+                    <td th:text="${file}"></td>
+                    <td>
+                        <a th:href="@{'/download/' + ${file}}" >Descargar</a>
+                        <a th:href="@{'/delete/' + ${file}}" >Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+  
+
+</html>
